@@ -88,6 +88,15 @@
                 
               </div>
 
+              <div class="flex justify-end">
+                <button class="btn btn-primary btn-lg flex-1 gap-2" @click="seatView = true">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Ödeme Yap
+                </button>
+              </div>
+
               </div>
             </div>  
           </div>
@@ -133,16 +142,6 @@
                   <h3 class="text-xl font-semibold mb-3 text-base-content">Etkinlik Hakkında</h3>
                   <p class="text-base-content/80 leading-relaxed">Bu bir örnek etkinlik açıklamasıdır.</p>
                 </div>
-  
-                <div class="card-actions flex flex-col sm:flex-row gap-3">
-                  <button class="btn btn-primary btn-lg flex-1 gap-2" @click="seatView = true">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    Ödeme Yap
-                  </button>
-                </div>
-  
               </div>
             </div>  
           </div>
