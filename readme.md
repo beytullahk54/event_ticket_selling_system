@@ -19,4 +19,7 @@ Frontend sayfaya http://localhost:3000 adresinden erişebilirsiniz.
 
 ## Backend Kurulumu
 
-Backend henüz geliştirilme aşamasında.
+```bash
+cd backend
+php artisan serve
+```
