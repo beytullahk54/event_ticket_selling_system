@@ -1,5 +1,4 @@
 <template>
-    <Header :title="`EVENT TICKET SELLING SYSTEM ${eventId}`" />
     <EventDetail :event="event" />
 </template>
 
