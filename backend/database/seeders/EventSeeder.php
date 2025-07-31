@@ -48,7 +48,7 @@ class EventSeeder extends Seeder
         Event::create([ 
             'title' => 'Can Gox',
             'description' => 'Can Gox, 31 Temmuz akşamı The Wall Saloon Performance sahnesinde sizlerle..',
-            'image_url' => 'https://event.kodlooper.com/images/4HKB7-cangox.jpg',
+            'image_url' => 'https://event.kodlooper.com/images/cangox.jpg',
             'event_date' => '2025-01-05 19:00:00',
             'venue_id' => 1,
             'amount' => 300,
