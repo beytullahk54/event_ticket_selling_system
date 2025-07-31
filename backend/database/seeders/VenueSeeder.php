@@ -10,18 +10,18 @@ class VenueSeeder extends Seeder
     public function run()
     {
         Venue::create([ 
-            'name' => 'Venue 1',
-            'address' => 'Address 1',
+            'name' => 'İstanbul',
+            'address' => 'Harbiye, Taşkışla Cd. No:8, 34367 HARBİYE/İstanbul',
         ]);
 
         Venue::create([ 
-            'name' => 'Venue 2',
-            'address' => 'Address 2',
+            'name' => 'Antalya',
+            'address' => 'Konyaaltı Sahil Şeridi Sahil Antalya Yaşam Parkı MURATPAŞA/Antalya',
         ]);
 
         Venue::create([ 
-            'name' => 'Venue 3',
-            'address' => 'Address 3',
+            'name' => 'İzmir',
+            'address' => 'İzmir Kültürpark Açıkhava Tiyatrosu',
         ]);
     }
 }

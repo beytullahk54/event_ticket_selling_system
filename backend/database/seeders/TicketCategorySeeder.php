@@ -10,7 +10,11 @@ class TicketCategorySeeder extends Seeder
     public function run()
     {
         TicketCategory::create([ 
-            'name' => 'Ticket Category 1',
+            'name' => 'Genel Giriş',
         ]);
+        TicketCategory::create([ 
+            'name' => 'Protokol',
+        ]);
+        
     }
 }
