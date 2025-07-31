@@ -52,6 +52,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import axios from 'axios'
+const config = useRuntimeConfig()
 const ticketStore = useMyTicketStore()
 
 const props = defineProps({
@@ -128,7 +129,7 @@ const selectedSeats = computed(() => {
 })
 
 const getSeats = () => {
-    axios.post(`http://localhost:8000/api/events/seats/${props.eventId}`)
+    axios.post(`${config.public.apiBase}/api/events/seats/${props.eventId}`)
     .then(response => {
 
         const seatsData = response.data.data

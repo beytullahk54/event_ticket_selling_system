@@ -157,17 +157,17 @@
   import { useToast } from 'vue-toast-notification';
   import 'vue-toast-notification/dist/theme-sugar.css';
   const toast = useToast();
-
+  const config = useRuntimeConfig()
   const payment = ref({
-    customer_email: 'test@test.com',
-    customer_name: 'Test',
-    customer_surname: 'Test',
-    customer_phone: '5555555555',
-    cc_name: 'Test Test',
-    cc_number: '1234567890123456',
-    cc_exp_month: '1',
-    cc_exp_year: '2025',
-    cc_exp_cvv: '123',
+    customer_email: '',
+    customer_name: '',
+    customer_surname: '',
+    customer_phone: '',
+    cc_name: '',
+    cc_number: '',
+    cc_exp_month: '',
+    cc_exp_year: '',
+    cc_exp_cvv: '',
     event_id: ticketStore.selectedEvent?.id || null,
   })
 
@@ -187,7 +187,7 @@
 
     
     try{
-      const response = await axios.post('http://localhost:8000/api/payments', payload)
+      const response = await axios.post(`${config.public.apiBase}/api/payments`, payload)
       if (response.status == 201) {
         toast.success(response.data.message)
         payload.data = response.data 

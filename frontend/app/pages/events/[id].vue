@@ -4,6 +4,7 @@
 
 <script setup>
 import axios from 'axios'
+const config = useRuntimeConfig()
 const route = useRoute()
 const eventId = route.params.id
 const ticketStore = useMyTicketStore()
@@ -11,7 +12,7 @@ const event = ref(null)
 const categories = ref(null)
 
 onMounted(async () => {
-    const response = await axios.get(`http://localhost:8000/api/events/${eventId}`)
+    const response = await axios.get(`${config.public.apiBase}/api/events/${eventId}`)
     event.value = response.data.data
     categories.value = response.data.ticket_categories
     ticketStore.setSelectedEvent(event.value)
