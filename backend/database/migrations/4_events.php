@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('description');
             $table->string('image_url');
             $table->datetime('event_date');
+            $table->decimal('amount', 10, 2);
+
             $table->timestamps();
         });
     }

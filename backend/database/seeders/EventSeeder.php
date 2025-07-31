@@ -15,6 +15,7 @@ class EventSeeder extends Seeder
             'image_url' => 'https://www.biletix.com/static/images/live/event/eventimages/fikretertan-2025su.jpg',
             'event_date' => '2025-01-01 19:00:00',
             'venue_id' => 1,
+            'amount' => 100,
         ]);
 
         Event::create([ 
@@ -23,6 +24,7 @@ class EventSeeder extends Seeder
             'image_url' => 'https://www.biletix.com/static/images/live/event/groupimages/tarihihavagazigenel.jpg',
             'event_date' => '2025-01-02 19:00:00',
             'venue_id' => 3,
+            'amount' => 150,
         ]);
 
         Event::create([ 
@@ -31,6 +33,7 @@ class EventSeeder extends Seeder
             'image_url' => 'https://www.biletix.com/static/images/live/event/groupimages/antalyaaa366845358-3.png',
             'event_date' => '2025-01-03 19:00:00',
             'venue_id' => 2,
+            'amount' => 200,
         ]);
 
         Event::create([ 
@@ -39,6 +42,7 @@ class EventSeeder extends Seeder
             'image_url' => 'https://www.biletix.com/static/images/live/event/groupimages/cemiltopuzlu_2025su.jpg',
             'event_date' => '2025-01-04 19:00:00',
             'venue_id' => 1,
+            'amount' => 250,
         ]);
 
         Event::create([ 
@@ -47,6 +51,7 @@ class EventSeeder extends Seeder
             'image_url' => 'https://www.biletix.com/static/images/live/event/eventimages/4HKB7-cangox.jpg',
             'event_date' => '2025-01-05 19:00:00',
             'venue_id' => 1,
+            'amount' => 300,
         ]);
     }
 }

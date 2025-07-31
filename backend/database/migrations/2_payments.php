@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('cc_number');
             $table->string('cc_exp_month');
             $table->string('cc_exp_year');
-            $table->string('cc_cvv');
+            $table->string('cc_exp_cvv');
             $table->timestamps();
         });
     }
