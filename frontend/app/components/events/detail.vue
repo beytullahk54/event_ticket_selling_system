@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-base-200 p-4">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div class="order-2 lg:order-1">
+        <div class="order-1 lg:order-1">
           <div class="relative overflow-hidden rounded-2xl shadow-2xl">
             <img 
               :src="event?.image_url" 
@@ -13,7 +13,7 @@
           </div>
         </div>
 
-        <div class="order-1 lg:order-2">
+        <div class="order-2 lg:order-2">
           <div class="card bg-base-100 shadow-2xl border-0">
             <div class="card-body p-8">
               <div class="mb-6">

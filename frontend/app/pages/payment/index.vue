@@ -3,7 +3,7 @@
       <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
-          <div class="order-1 lg:order-2">
+          <div class="order-2 lg:order-2">
             <div class="card bg-base-100 shadow-2xl border-0">
               <div class="card-body p-8">
                 <div class="mb-6">
