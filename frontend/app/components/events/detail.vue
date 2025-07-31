@@ -5,7 +5,7 @@
         <div class="order-2 lg:order-1">
           <div class="relative overflow-hidden rounded-2xl shadow-2xl">
             <img 
-              :src="event.image" 
+              :src="event?.image_url" 
               alt="Etkinlik Görseli" 
               class="w-full h-80 lg:h-96 object-cover transition-transform duration-300 hover:scale-105" 
             />
@@ -18,7 +18,7 @@
             <div class="card-body p-8">
               <div class="mb-6">
                 <h1 class="text-3xl lg:text-4xl font-bold text-base-content mb-2">
-                  {{ event.name }}
+                  {{ event?.title }}
                 </h1>
                 <div class="badge badge-primary badge-lg">Etkinlik</div>
               </div>
@@ -33,7 +33,7 @@
                   </div>
                   <div>
                     <p class="text-sm text-base-content/60">Tarih</p>
-                    <p class="font-semibold text-base-content">{{ event.date }}</p>
+                    <p class="font-semibold text-base-content">{{ dateUtils.formatDate(event?.event_date) }} {{ dateUtils.formatTime(event?.event_date) }}</p>
                   </div>
                 </div>
 
@@ -46,36 +46,31 @@
                   </div>
                   <div>
                     <p class="text-sm text-base-content/60">Konum</p>
-                    <p class="font-semibold text-base-content">{{ event.location }}</p>
+                    <p class="font-semibold text-base-content">{{ event?.venue?.name }} / {{ event?.venue?.address }}</p>
                   </div>
                 </div>
               </div>
 
               <div class="mb-8">
                 <h3 class="text-xl font-semibold mb-3 text-base-content">Etkinlik Hakkında</h3>
-                <p class="text-base-content/80 leading-relaxed">{{ event.description }}</p>
+                <p class="text-base-content/80 leading-relaxed">{{ event?.description }}</p>
               </div>
 
-              <div class="card-actions flex flex-col sm:flex-row gap-3">
+              <!-- <div class="card-actions flex flex-col sm:flex-row gap-3">
                 <button class="btn btn-primary btn-lg flex-1 gap-2" @click="seatView = true">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                   Koltuk Seç
                 </button>
-              </div>
-
-              <div class="mb-8" v-if="seatView">
-                <EventBus />
-              </div>
-
-              <div class="card-actions flex flex-col sm:flex-row gap-3" v-if="seatView" >
-                  <NuxtLink to="/payment/1" class="btn btn-secondary btn-lg flex-1 gap-2">
-                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
-                      </svg>
-                      Bilet Oluştur
-                  </NuxtLink>
+              </div> -->
+              <h3 class="text-xl font-semibold mb-3 text-base-content">Kategori</h3>
+              <div class="grid grid-cols-2 gap-2">
+                <NuxtLink :to="`/seat-plans/${event.id}/${category.id}`" v-for="category in categories" :key="category.id"> 
+                  <button class="btn btn-primary btn-lg flex-1 gap-2 w-full"  >
+                    {{ category.name }}
+                  </button>
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -86,11 +81,17 @@
 </template>
 
 <script setup>
-defineProps({
-  event: {
-    type: Object,
-    required: true
-  }
+import axios from 'axios'
+
+ const props = defineProps({
+    event: {
+      type: Object,
+      required: true
+    },
+    categories: {
+      type: Array,
+      required: true
+    }
 })
 
 const seatView = ref(false)

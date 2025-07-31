@@ -66,6 +66,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+const ticketStore = useMyTicketStore()
 
 // Koltuk verileri - 6 sıra, her sırada 8 koltuk
 const seats = ref([
@@ -136,6 +137,7 @@ const selectedSeats = computed(() => {
             }
         })
     })
+    ticketStore.ticket.seats = selected
     return selected
 })
 </script>
