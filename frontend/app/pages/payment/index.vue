@@ -53,13 +53,13 @@
                   </div>
                   <div class="mb-8 col-span-3">                                      
                     <label class="floating-label">
-                      <input type="text" v-model="payment.cc_number" placeholder="Kart Numarası" class="input input-md w-full" required />
+                      <input type="number" v-model="payment.cc_number" placeholder="Kart Numarası" class="input input-md w-full" required />
                       <span>Kart Numarası</span>
                     </label>
                   </div>
                   <div class="mb-8">                                      
                     <label class="floating-label">
-                      <input type="text" v-model="payment.cc_exp_cvv" placeholder="Cvv" class="input input-md w-full" required />
+                      <input type="number" v-model="payment.cc_exp_cvv" placeholder="Cvv" class="input input-md w-full" required />
                       <span>Cvv</span>
                     </label>
                   </div>

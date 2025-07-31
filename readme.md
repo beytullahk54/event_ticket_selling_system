@@ -1,6 +1,6 @@
 # Event Ticket Selling System
 
-Bu bir event ticket selling system'dir.
+Bu bir etkinlik bilet satış sistemidir.
 
 ## Teknolojiler
 
@@ -26,3 +26,7 @@ php artisan migrate
 php artisan db:seed
 php artisan serve
 ```
+
+Bu projenin demo versiyonuna aşağıdaki adresten ulaşabilirsiniz:
+
+https://event-ticket-selling-system.vercel.app/
