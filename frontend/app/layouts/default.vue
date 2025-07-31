@@ -5,9 +5,11 @@
 </template>
 
 <script setup>
-// Layout için gerekli logic buraya yazılabilir
+
+useHead({
+  title: 'Event Ticket Selling System'
+})
 </script>
 
 <style scoped>
-/* Layout özel stilleri */
 </style> 
