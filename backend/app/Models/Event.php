@@ -15,4 +15,8 @@ class Event extends Model
     {
         return $this->belongsTo(Venue::class);
     }
+    
+    protected $casts = [
+        'event_date' => 'datetime',
+    ];
 }
