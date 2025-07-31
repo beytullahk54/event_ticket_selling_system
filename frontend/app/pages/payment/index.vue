@@ -15,21 +15,21 @@
                 <div class="grid grid-cols-2 gap-4">
                   <div class="mb-8 col-span-2">                                      
                     <label class="floating-label w-full">
-                      <input type="text" placeholder="Email" class="input input-md w-full" />
+                      <input type="email" v-model="payment.customer_email" placeholder="Email" class="input input-md w-full" required />
                       <span>Email</span>
                     </label>
                   </div>
 
                   <div class="mb-8">                                      
                     <label class="floating-label">
-                      <input type="text" placeholder="Adı" class="input input-md w-full" />
+                      <input type="text" v-model="payment.customer_name" placeholder="Adı" class="input input-md w-full" required />
                       <span>Adı</span>
                     </label>
                   </div>
               
                   <div class="mb-8">                                      
                     <label class="floating-label">
-                      <input type="text" placeholder="Soyadı" class="input input-md w-full" />
+                      <input type="text" v-model="payment.customer_surname" placeholder="Soyadı" class="input input-md w-full" required />
                       <span>Soyadı</span>
                     </label>
                   </div>
@@ -40,7 +40,7 @@
               <div class="grid grid-cols-3 gap-4">
                 <div class="mb-8 col-span-3">                                      
                   <label class="floating-label">
-                    <input type="text" placeholder="Telefon Numarası" class="input input-md w-full" />
+                    <input type="number" v-model="payment.customer_phone" placeholder="Telefon Numarası" class="input input-md w-full" required />
                     <span>Telefon Numarası</span>
                   </label>
                 </div>
@@ -49,38 +49,37 @@
 
                 <div class="mb-8 col-span-3">                                      
                   <label class="floating-label">
-                    <input type="text" placeholder="Kart Üzerindeki Adı Soyadı" class="input input-md w-full" />
+                    <input type="text" v-model="payment.cc_name" placeholder="Kart Üzerindeki Adı Soyadı" class="input input-md w-full" required />
                     <span>Kart Üzerindeki Adı Soyadı</span>
                   </label>
                 </div>
                 <div class="mb-8 col-span-3">                                      
                   <label class="floating-label">
-                    <input type="text" placeholder="Kart Numarası" class="input input-md w-full" />
+                    <input type="text" v-model="payment.cc_number" placeholder="Kart Numarası" class="input input-md w-full" required />
                     <span>Kart Numarası</span>
                   </label>
                 </div>
                 <div class="mb-8">                                      
                   <label class="floating-label">
-                    <input type="text" placeholder="Cvv" class="input input-md w-full" />
+                    <input type="text" v-model="payment.cc_exp_cvv" placeholder="Cvv" class="input input-md w-full" required />
                     <span>Cvv</span>
                   </label>
                 </div>
                 
                 <div class="mb-8">                                      
                   <label class="floating-label">
-                    
-                    <select class="select select-bordered w-full" >
+                    <select class="select select-bordered w-full" v-model="payment.cc_exp_month" required>
                       <option disabled selected>Gün</option>
-                      <option v-for="i in 12" :key="i">{{ i }}</option>
+                      <option v-for="i in 12" :key="i" >{{ i }}</option>
                     </select>
                     <span>Ay</span>
                   </label>
                 </div>
                 <div class="mb-8">                                      
                   <label class="floating-label">
-                    <select class="select select-bordered w-full" >
+                    <select class="select select-bordered w-full"  v-model="payment.cc_exp_year" required  >
                       <option disabled selected>Yıl</option>
-                      <option v-for="i in 10" :key="i">{{ 2025 + i }}</option>
+                      <option v-for="i in 10" :key="i" :value="2024 + i">{{ 2024 + i }}</option>
                     </select>
                     <span>Yıl</span>
                   </label>
@@ -89,7 +88,7 @@
               </div>
 
               <div class="flex justify-end">
-                <button class="btn btn-primary btn-lg flex-1 gap-2" @click="seatView = true">
+                <button class="btn btn-primary btn-lg flex-1 gap-2" @click="paymentCreate">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
@@ -106,7 +105,7 @@
               <div class="card-body p-8">
                 <div class="mb-6">
                   <h1 class="text-3xl lg:text-4xl font-bold text-base-content mb-2">
-                    Etkinlik Detayları
+                    {{ ticketStore.selectedEvent?.title }}
                   </h1>
                 </div>
   
@@ -120,7 +119,7 @@
                     </div>
                     <div>
                       <p class="text-sm text-base-content/60">Tarih</p>
-                      <p class="font-semibold text-base-content">2025-07-30</p>
+                      <p class="font-semibold text-base-content">{{ dateUtils.formatDate(ticketStore.selectedEvent?.event_date) }} {{ dateUtils.formatTime(ticketStore.selectedEvent?.event_date) }}</p>
                     </div>
                   </div>
   
@@ -133,14 +132,14 @@
                     </div>
                     <div>
                       <p class="text-sm text-base-content/60">Konum</p>
-                      <p class="font-semibold text-base-content">İstanbul</p>
+                      <p class="font-semibold text-base-content">{{ ticketStore?.selectedEvent?.venue?.name }} / {{ ticketStore?.selectedEvent?.venue?.address }}</p>
                     </div>
                   </div>
                 </div>
   
                 <div class="mb-8">
                   <h3 class="text-xl font-semibold mb-3 text-base-content">Etkinlik Hakkında</h3>
-                  <p class="text-base-content/80 leading-relaxed">Bu bir örnek etkinlik açıklamasıdır.</p>
+                  <p class="text-base-content/80 leading-relaxed">{{ ticketStore.selectedEvent?.description }}</p>
                 </div>
               </div>
             </div>  
@@ -152,8 +151,44 @@
   
   <script setup>
 
-  
+  import { useRouter } from 'vue-router'
+  const router = useRouter()
   const seatView = ref(false)
-  
+  const ticketStore = useMyTicketStore()
+  import axios from 'axios'
+
+  const payment = ref({
+    customer_email: 'test@test.com',
+    customer_name: 'Test',
+    customer_surname: 'Test',
+    customer_phone: '5555555555',
+    cc_name: 'Test Test',
+    cc_number: '1234567890123456',
+    cc_exp_month: '1',
+    cc_exp_year: '2025',
+    cc_exp_cvv: '123',
+    event_id: ticketStore.selectedEvent?.id || null,
+  })
+
+  onMounted(() => {
+    if(ticketStore.selectedEvent?.id == null) {
+      return router.push(`/`)
+    }
+  })
+
+  const paymentCreate = async () => {
+    const payload = {
+      ...payment.value,
+      ticket_id: ticketStore.ticket.id,
+      category_id: ticketStore.ticket.category_id,
+      seat_id: ticketStore.ticket.seats.join(',')
+    }
+
+    const response = await axios.post('http://localhost:8000/api/payments', payload)
+    if (response.status === 200) {
+      console.log(response.data)
+    }
+  }
+
   </script>
   
