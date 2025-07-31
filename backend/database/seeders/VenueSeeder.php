@@ -13,5 +13,15 @@ class VenueSeeder extends Seeder
             'name' => 'Venue 1',
             'address' => 'Address 1',
         ]);
+
+        Venue::create([ 
+            'name' => 'Venue 2',
+            'address' => 'Address 2',
+        ]);
+
+        Venue::create([ 
+            'name' => 'Venue 3',
+            'address' => 'Address 3',
+        ]);
     }
 }
