@@ -11,91 +11,89 @@
                     Ödeme Sayfası
                   </h1>
                 </div>
-             
+              <form @submit.prevent="paymentCreate">
                 <div class="grid grid-cols-2 gap-4">
-                  <div class="mb-8 col-span-2">                                      
-                    <label class="floating-label w-full">
-                      <input type="email" v-model="payment.customer_email" placeholder="Email" class="input input-md w-full" required />
-                      <span>Email</span>
-                    </label>
-                  </div>
+                    <div class="mb-8 col-span-2">                                      
+                      <label class="floating-label w-full">
+                        <input type="email" v-model="payment.customer_email" placeholder="Email" class="input input-md w-full" required />
+                        <span>Email</span>
+                      </label>
+                    </div>
 
-                  <div class="mb-8">                                      
+                    <div class="mb-8">                                      
+                      <label class="floating-label">
+                        <input type="text" v-model="payment.customer_name" placeholder="Adı" class="input input-md w-full" required />
+                        <span>Adı</span>
+                      </label>
+                    </div>
+                
+                    <div class="mb-8">                                      
+                      <label class="floating-label">
+                        <input type="text" v-model="payment.customer_surname" placeholder="Soyadı" class="input input-md w-full" required />
+                        <span>Soyadı</span>
+                      </label>
+                    </div>
+                </div>
+      
+                <div class="grid grid-cols-3 gap-4">
+                  <div class="mb-8 col-span-3">                                      
                     <label class="floating-label">
-                      <input type="text" v-model="payment.customer_name" placeholder="Adı" class="input input-md w-full" required />
-                      <span>Adı</span>
+                      <input type="number" v-model="payment.customer_phone" placeholder="Telefon Numarası" class="input input-md w-full" required />
+                      <span>Telefon Numarası</span>
                     </label>
                   </div>
               
-                  <div class="mb-8">                                      
+                  <h2 class="text-xl font-semibold mb-3 text-base-content">Kart Bilgileri</h2>
+
+                  <div class="mb-8 col-span-3">                                      
                     <label class="floating-label">
-                      <input type="text" v-model="payment.customer_surname" placeholder="Soyadı" class="input input-md w-full" required />
-                      <span>Soyadı</span>
+                      <input type="text" v-model="payment.cc_name" placeholder="Kart Üzerindeki Adı Soyadı" class="input input-md w-full" required />
+                      <span>Kart Üzerindeki Adı Soyadı</span>
                     </label>
                   </div>
-              </div>
+                  <div class="mb-8 col-span-3">                                      
+                    <label class="floating-label">
+                      <input type="text" v-model="payment.cc_number" placeholder="Kart Numarası" class="input input-md w-full" required />
+                      <span>Kart Numarası</span>
+                    </label>
+                  </div>
+                  <div class="mb-8">                                      
+                    <label class="floating-label">
+                      <input type="text" v-model="payment.cc_exp_cvv" placeholder="Cvv" class="input input-md w-full" required />
+                      <span>Cvv</span>
+                    </label>
+                  </div>
+                  
+                  <div class="mb-8">                                      
+                    <label class="floating-label">
+                      <select class="select select-bordered w-full" v-model="payment.cc_exp_month" required>
+                        <option disabled selected>Ay</option>
+                        <option v-for="i in 12" :key="i" >{{ i }}</option>
+                      </select>
+                      <span>Ay</span>
+                    </label>
+                  </div>
+                  <div class="mb-8">                                      
+                    <label class="floating-label">
+                      <select class="select select-bordered w-full"  v-model="payment.cc_exp_year" required  >
+                        <option disabled selected>Yıl</option>
+                        <option v-for="i in 10" :key="i" :value="2024 + i">{{ 2024 + i }}</option>
+                      </select>
+                      <span>Yıl</span>
+                    </label>
+                  </div>
+                  
+                </div>
 
-
-                
-              <div class="grid grid-cols-3 gap-4">
-                <div class="mb-8 col-span-3">                                      
-                  <label class="floating-label">
-                    <input type="number" v-model="payment.customer_phone" placeholder="Telefon Numarası" class="input input-md w-full" required />
-                    <span>Telefon Numarası</span>
-                  </label>
+                <div class="flex justify-end">
+                  <button class="btn btn-primary btn-lg flex-1 gap-2" type="submit">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Ödeme Yap
+                  </button>
                 </div>
-            
-                <h2 class="text-xl font-semibold mb-3 text-base-content">Kart Bilgileri</h2>
-
-                <div class="mb-8 col-span-3">                                      
-                  <label class="floating-label">
-                    <input type="text" v-model="payment.cc_name" placeholder="Kart Üzerindeki Adı Soyadı" class="input input-md w-full" required />
-                    <span>Kart Üzerindeki Adı Soyadı</span>
-                  </label>
-                </div>
-                <div class="mb-8 col-span-3">                                      
-                  <label class="floating-label">
-                    <input type="text" v-model="payment.cc_number" placeholder="Kart Numarası" class="input input-md w-full" required />
-                    <span>Kart Numarası</span>
-                  </label>
-                </div>
-                <div class="mb-8">                                      
-                  <label class="floating-label">
-                    <input type="text" v-model="payment.cc_exp_cvv" placeholder="Cvv" class="input input-md w-full" required />
-                    <span>Cvv</span>
-                  </label>
-                </div>
-                
-                <div class="mb-8">                                      
-                  <label class="floating-label">
-                    <select class="select select-bordered w-full" v-model="payment.cc_exp_month" required>
-                      <option disabled selected>Gün</option>
-                      <option v-for="i in 12" :key="i" >{{ i }}</option>
-                    </select>
-                    <span>Ay</span>
-                  </label>
-                </div>
-                <div class="mb-8">                                      
-                  <label class="floating-label">
-                    <select class="select select-bordered w-full"  v-model="payment.cc_exp_year" required  >
-                      <option disabled selected>Yıl</option>
-                      <option v-for="i in 10" :key="i" :value="2024 + i">{{ 2024 + i }}</option>
-                    </select>
-                    <span>Yıl</span>
-                  </label>
-                </div>
-                
-              </div>
-
-              <div class="flex justify-end">
-                <button class="btn btn-primary btn-lg flex-1 gap-2" @click="paymentCreate">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                  Ödeme Yap
-                </button>
-              </div>
-
+              </form>
               </div>
             </div>  
           </div>
@@ -155,7 +153,10 @@
   const router = useRouter()
   const seatView = ref(false)
   const ticketStore = useMyTicketStore()
-  import axios from 'axios'
+  import axios from 'axios' 
+  import { useToast } from 'vue-toast-notification';
+  import 'vue-toast-notification/dist/theme-sugar.css';
+  const toast = useToast();
 
   const payment = ref({
     customer_email: 'test@test.com',
@@ -184,10 +185,20 @@
       seat_id: ticketStore.ticket.seats.join(',')
     }
 
-    const response = await axios.post('http://localhost:8000/api/payments', payload)
-    if (response.status === 200) {
-      console.log(response.data)
+    
+    try{
+      const response = await axios.post('http://localhost:8000/api/payments', payload)
+      if (response.status == 201) {
+        toast.success(response.data.message)
+        payload.data = response.data 
+        ticketStore.setPayment(payload)
+        router.push(`/success-page`)
+      } 
+    }catch(error){
+      toast.error(error.response.data.message)
     }
+    
+    
   }
 
   </script>
