@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //event_id,category_id,seat_id,order_id
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('event_id')->constrained('events');
+            $table->string('event_id');
             $table->foreignId('category_id')->constrained('ticket_categories');
-            $table->foreignId('seat_id')->constrained('seats');
+            $table->string('seat_id');
             $table->foreignId('order_id')->constrained('orders');
+            $table->timestamps();
         });
     }
 
