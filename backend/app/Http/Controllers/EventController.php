@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use App\Models\TicketCategory;
 
 class EventController extends Controller
 {
@@ -24,8 +25,10 @@ class EventController extends Controller
     public function show($id)
     {
         $data = Event::select('id', 'title',"description","image_url","event_date","venue_id")
-            ->with('venue:id,name')
+            ->with('venue:id,name,address')
             ->find($id);
+
+        $ticket_categories = TicketCategory::select('id', 'name')->get();
 
         if (!$data) {
             return response()->json(
@@ -39,7 +42,8 @@ class EventController extends Controller
             [
                 'status' => "success",
                 'message' => __('message.success'),
-                'data' => $data
+                'data' => $data,
+                'ticket_categories' => $ticket_categories
             ], 200);
     }
 }
