@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Models\TicketCategory;
+use App\Models\Seat;
 
 class EventController extends Controller
 {
@@ -44,6 +45,19 @@ class EventController extends Controller
                 'message' => __('message.success'),
                 'data' => $data,
                 'ticket_categories' => $ticket_categories
+            ], 200);
+    }
+
+    public function getSeats($event_id)
+    {
+        $event = Event::find($event_id);
+        
+        $data = Seat::where('venue_id', $event->venue_id)->get();
+        return response()->json(
+            [
+                'status' => "success",
+                'message' => __('message.success'),
+                'data' => $data
             ], 200);
     }
 }
