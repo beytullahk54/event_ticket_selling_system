@@ -2,24 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Payment;
+use App\Models\Event;
+use App\Models\Order;
 use App\Http\Requests\PaymentRequest;
-use Illuminate\Http\Request;
+use App\Models\Ticket;
 
 class PaymentController extends Controller
 {
     public function store(PaymentRequest $request)
     {
-        $validated = $request->validated();
-        return $validated;
+        $request = $request->validated();
+        $order = Order::create($request);
 
-        // $payment = Payment::create($validated);
+        $request['order_id'] = $order->id;
+        $ticket = Ticket::create($request);
 
+        return $ticket;
         return response()->json(
             [
                 'status' => "success",
-                'message' => __('message.success'),
-                'data' => $request->all()
-            ], 200);
+                'message' => "Biletiniz başarıyla oluşturuldu",
+            ], 201);
     }
 }

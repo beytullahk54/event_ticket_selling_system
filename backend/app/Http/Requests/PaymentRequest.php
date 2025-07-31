@@ -22,22 +22,25 @@ class PaymentRequest extends FormRequest
     public function rules()
     {
         return [
-            'total_amount' => 'required',
-            'cc_number' => 'required',
-            'cc_exp_month' => 'required',
-            'cc_exp_year' => 'required',
-            'cc_cvv' => 'required',
-            'cc_holder_name' => 'required'
+            "category_id" => 'required',
+            "seat_id" => 'required',
+            "customer_name" => 'required',
+            "customer_surname" => 'required',
+            "customer_email" => 'required',
+            "customer_phone" => 'required',
+            "cc_number" => 'required',
+            "cc_exp_month" => 'required',
+            "cc_exp_year" => 'required',
+            "cc_exp_cvv" => 'required',
+            "event_id" => 'required'
+            //'order_id' => 'required|exists:orders,id',
         ];
     }
 
     public function messages()
     {
         return [
-            'required' => __('message.required'),
-            'numeric' => __('message.numeric'),
-            'integer' => __('message.integer'),
-            'exists' => __('message.exists'),
+            'required' => __('message.required')
         ];
     }
 
