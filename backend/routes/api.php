@@ -10,4 +10,6 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::resource('events', EventController::class);
+Route::post('events/seats/{id}', [EventController::class, 'getSeats']);
+
 Route::resource('payments', PaymentController::class); 
