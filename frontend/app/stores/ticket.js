@@ -6,7 +6,8 @@ export const useMyTicketStore = defineStore('myTicketStore', {
     ticket: {
       event_id: null,
       category_id: null,
-      seats: []
+      seats: [],
+      payment: {}
     },
     seat_plan: {},
   }),
@@ -22,6 +23,9 @@ export const useMyTicketStore = defineStore('myTicketStore', {
     },
     setCategoryId(category_id) {
       this.ticket.category_id = category_id
+    },
+    setPayment(payment) {
+      this.ticket.payment = payment
     }
   }
 })
